@@ -1,9 +1,15 @@
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
 
 const app = express();
 
 app.use(express.static('public'));
+app.use(expressLayouts);
+app.set('layout', 'layouts/main-layout');
 app.set('view engine', 'ejs');
+//webpage works fine without this
+// app.set('views', __dirname + '/views');
+
 
 app.get('/', (req, res) => {
   res.render('home')
